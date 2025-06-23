@@ -1,16 +1,10 @@
-import java.util.List;
-import java.util.ArrayList;
-
 class Solution {
     public int[] solution(int n, int k) {
-        List<Integer> answer = new ArrayList();
-        
-        for (int i = 1; i <= n; i++) {
-            if (i % k == 0) {
-                answer.add(i);
-            }
+        int count = n / k;
+        int[] answer = new int[count];
+        for (int i = 1; i <= answer.length; i++){
+            answer[i-1] = i * k;
         }
-        
-        return answer.stream().mapToInt(i -> i).toArray();
+        return answer;
     }
 }
