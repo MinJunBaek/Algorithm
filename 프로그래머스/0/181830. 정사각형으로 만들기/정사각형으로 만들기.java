@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class Solution {
     public int[][] solution(int[][] arr) {
         int len = arr.length >= arr[0].length ? arr.length : arr[0].length;
