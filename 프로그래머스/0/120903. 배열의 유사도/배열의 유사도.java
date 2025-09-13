@@ -4,13 +4,10 @@ import java.util.Set;
 
 class Solution {
     public int solution(String[] s1, String[] s2) {
-        int answer = 0;
-        Set<String> strSet = new HashSet<>(Arrays.asList(s1));
-        for (String s : s2) {
-            if (strSet.contains(s)) {
-                answer++;
-            }
-        }
+        Set<String> strSet1 = new HashSet<>(Arrays.asList(s1));
+        Set<String> strSet2 = new HashSet<>(Arrays.asList(s2));
+        strSet1.retainAll(strSet2);
+        int answer = strSet1.size();
         return answer;
     }
 }
