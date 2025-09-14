@@ -1,0 +1,13 @@
+-- 코드를 작성해주세요
+SELECT ID,
+    CASE
+    WHEN percent <= 0.25 THEN 'CRITICAL'
+    WHEN percent <= 0.5 THEN 'HIGH'
+    WHEN percent <= 0.75 THEN 'MEDIUM'
+    ELSE 'LOW'
+    END AS COLONY_NAME
+FROM (
+    SELECT ID, PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS percent
+    FROM ECOLI_DATA
+) AS ECOLI_DATA
+ORDER BY ID ASC;
