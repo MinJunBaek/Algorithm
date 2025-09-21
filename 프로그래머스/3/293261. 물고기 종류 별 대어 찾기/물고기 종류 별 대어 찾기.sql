@@ -1,0 +1,12 @@
+-- 코드를 작성해주세요
+SELECT p.ID, a.FISH_NAME, a.LENGTH
+FROM FISH_INFO AS p
+    JOIN (SELECT cni.FISH_NAME, c.FISH_TYPE, MAX(c.LENGTH) AS LENGTH
+          FROM FISH_INFO AS c
+          JOIN FISH_NAME_INFO AS cni
+          ON c.FISH_TYPE = cni.FISH_TYPE
+          GROUP BY cni.FISH_NAME, c.FISH_TYPE) AS a
+    ON p.LENGTH = a.LENGTH
+    AND p.FISH_TYPE = a.FISH_TYPE
+ORDER BY p.ID ASC
+;
