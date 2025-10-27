@@ -1,12 +1,13 @@
 class Solution {
     public String solution(int age) {
-        StringBuilder answer = new StringBuilder();
-        char[] charArr = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
-        while (age > 0) {
-            answer.insert(0, charArr[age % 10]);
-            age /= 10;
-        }
+        String strAge = age + "";
+        StringBuilder answer = new StringBuilder(strAge.length());
         
+        for (int i = 0; i < strAge.length(); i++) {
+            int digit = strAge.charAt(i) - '0';
+            char ageChar = (char) ('a' + digit);
+            answer.append(ageChar);
+        }
         return answer.toString();
     }
 }
