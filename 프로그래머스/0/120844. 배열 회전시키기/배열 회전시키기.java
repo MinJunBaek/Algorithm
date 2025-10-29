@@ -1,21 +1,17 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class Solution {
     public int[] solution(int[] numbers, String direction) {
-        Deque<Integer> linkList = new LinkedList<>();
-        
+        List<Integer> numList = new ArrayList<>();
         for (int number : numbers) {
-            linkList.add(number);
+            numList.add(number);
         }
         
-        if (direction.equals("right")) {
-            linkList.addFirst(linkList.pollLast());
-        } else {
-            linkList.addLast(linkList.pollFirst());
-        }
+        Collections.rotate(numList, direction.equals("right") ? 1 : -1);
         
-        int[] answer = linkList.stream().mapToInt(i->i).toArray();
+        int[] answer = numList.stream().mapToInt(i -> i).toArray();
         return answer;
     }
 }
